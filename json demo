@@ -1,0 +1,13 @@
+data={
+  "first-name":"collins"
+  "age":"25"
+  "skills":["python","java","html"]
+  ;
+
+  let jsonString= JSON.stringify(data , null, 4);
+  console.log(JSON.String);
+
+  let jsonObject=JSON.parse(jsonString);
+  console.log(json.Object.name);
+  
+  
