@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop the latest VirtualWear merchandise, including exclusive VirtualPay-themed apparel.">
+    <meta name="keywords" content="VirtualWear, VirtualPay, merchandise, T-shirts, hoodies, fashion">
+    <title>VirtualWear - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="VirtualWear Logo">
+        </div>
+        <h1>Welcome to VirtualWear</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h2>Shop the Latest VirtualWear Merchandise</h2>
+        <p>Exclusive gear for VirtualPay enthusiasts</p>
+        <button onclick="window.location.href='products.html'">Shop Now</button>
+    </section>
+
+    <section id="products">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card" data-name="VirtualWear T-Shirt" data-price="1500">
+                <img src="tshirt.jpg" alt="VirtualWear T-Shirt">
+                <h3>VirtualWear T-Shirt</h3>
+                <p>Classic cotton t-shirt with VirtualPay-themed branding.</p>
+                <p><strong>kes 1500.00</strong></p>
+                <button onclick="addToCartFromButton('VirtualWear T-Shirt', 1500)">Add to Cart</button>
+            
+            </div>
+            <div class="product-card" data-name="VirtualWear Polo Shirt" data-price="3000">
+                <img src="Polo.jpg" alt="VirtualWear Polo Shirt">
+                <h3>VirtualWear Polo Shirt</h3>
+                <p>Stylish polo shirt with VirtualWear logo.</p>
+                <p><strong>kes 3000.00</strong></p>
+                <button onclick="addToCartFromButton('VirtualWear Polo Shirt', 3000)">Add to Cart</button>
+
+            </div>
+
+            <div class="product-card" data-name="VirtualWear Sweatpants" data-price="4000">
+                <img src="Sweatpants.jpg" alt="VirtualWear Sweatpants">
+                <h3>VirtualWear Sweatpants</h3>
+                <p>Comfortable sweatpants with VirtualWear logo.</p>
+                <p><strong>kes 4000.00</strong></p>
+                <button onclick="addToCartFromButton('VirtualWear Sweatpants', 4000)">Add to Cart</button>  
+
+                
+               </div> 
+
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 VirtualWear. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+     function addToCartFromButton(name, price) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+        // Check if the item already exists in cart
+        let existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ name, price: Number(price), quantity: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        alert(name + " has been added to your cart!");
+    }
+
+    function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        let cartCountElement = document.getElementById("cart-count");
+        if (cartCountElement) {
+            cartCountElement.textContent = totalItems;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+</body>
+
+</html>
