@@ -20,7 +20,7 @@ with open("data.json", "r") as json_file:
     loaded_data = json.load(json_file)
 
 # Display JSON data
-print("\nLoaded JSON data:")
+print("\nThis Is The Loaded  data:")
 print(json.dumps(loaded_data, indent=4))
 
   
