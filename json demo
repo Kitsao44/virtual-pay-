@@ -1,13 +1,27 @@
-data={
-  "first-name":"collins"
-  "age":"25"
-  "skills":["python","java","html"]
-  ;
 
-  let jsonString= JSON.stringify(data , null, 4);
-  console.log(JSON.String);
+import json
 
-  let jsonObject=JSON.parse(jsonString);
-  console.log(json.Object.name);
+# Data to be written into a JSON file
+data = {
+    "name": "Alice",
+    "age": 25,
+    "city": "Nairobi",
+    "skills": ["Python", "JavaScript", "SQL"]
+}
+
+# JSON data to a file
+with open("data.json", "w") as json_file:
+    json.dump(data, json_file, indent=4)
+
+print("JSON file 'data.json' has been created.")
+
+# JSON data from the file
+with open("data.json", "r") as json_file:
+    loaded_data = json.load(json_file)
+
+# Display JSON data
+print("\nLoaded JSON data:")
+print(json.dumps(loaded_data, indent=4))
+
   
   
